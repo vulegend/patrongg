@@ -21,7 +21,7 @@ func GetAbilityDetails(w http.ResponseWriter, r *http.Request) {
 	abilityDetails, err := database.GetAbilityDetails(abilityID)
 
 	if err != nil {
-		http.Error(w, "Ability with that ID is not found", http.StatusBadRequest)
+		http.Error(w, "Ability with that ID is not found", http.StatusNotFound)
 	}
 
 	json.NewEncoder(w).Encode(abilityDetails)

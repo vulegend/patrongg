@@ -21,7 +21,7 @@ func GetHeroAbilities(w http.ResponseWriter, r *http.Request) {
 	abilities, err := database.GetHeroAbilities(heroID)
 
 	if err != nil {
-		http.Error(w, "Hero with that ID not found", http.StatusBadRequest)
+		http.Error(w, "Hero with that ID not found", http.StatusNotFound)
 	}
 
 	json.NewEncoder(w).Encode(abilities)
@@ -51,7 +51,7 @@ func GetHero(w http.ResponseWriter, r *http.Request) {
 	hero, err := database.GetHero(heroID)
 
 	if err != nil {
-		http.Error(w, err.Error(), http.StatusBadRequest)
+		http.Error(w, err.Error(), http.StatusNotFound)
 		return
 	}
 
